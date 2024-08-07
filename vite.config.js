@@ -13,7 +13,10 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
 
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        // Ищем все HTML файлы, кроме 1-gallery.html
+        input: glob
+          .sync('./src/*.html')
+          .filter(file => !file.includes('1-gallery.html')),
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
