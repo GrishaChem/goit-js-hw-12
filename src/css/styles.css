@@ -118,7 +118,34 @@ body {
   }
 }
 
+.button.is-hidden {
+  display: none;
+}
+
 /* Класс для показа лоадера */
 .loader.is-visible {
   display: block; /* Показать лоадер */
+}
+
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.loading {
+  display: none;
+}
+
+.button:disabled .loading {
+  display: inline-block;
+}
+
+.button:disabled .label {
+  display: none;
 }

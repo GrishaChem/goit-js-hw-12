@@ -9,12 +9,21 @@
   </head>
   <body>
     <!-- <load ="1-gallery.html" /> -->
-    <form action="" id="search-form">
+    <form action="" id="search-form" class="search-form">
       <input type="text" name="" id="input" />
       <button type="submit" id="button">Search</button>
     </form>
     <div class="gallery" id="gallery"></div>
     <div id="loader" class="loader"></div>
+    <button
+      type="button"
+      class="btn btn-primary button"
+      data-action="load-more"
+    >
+      <span class="label">Load more</span>
+      <span class="loading">Load images, please wait</span>
+    </button>
+
     <!-- <img src="./img/javascript.svg" alt="" /> -->
 
     <!-- <load ="2-form.html" /> -->
