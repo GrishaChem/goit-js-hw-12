@@ -23,3 +23,102 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #212121;
+  line-height: 1.5;
+}
+
+/* Основні стилі для галереї */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Стилі для кожної картки зображення */
+.gallery-item {
+  display: block;
+  position: relative;
+  width: calc(25% - 10px); /* 4 картки в ряд з урахуванням відступів */
+  margin-bottom: 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Зображення всередині картки */
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 200px; /* Фіксована висота для всіх зображень */
+  object-fit: cover; /* Зображення зберігає пропорції та займає весь контейнер */
+  transition: transform 0.3s ease;
+}
+
+/* Ефект при наведенні на зображення */
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Інформаційний блок */
+.info {
+  padding: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Стилі для тексту інформаційного блоку */
+.info p {
+  margin: 0;
+  padding: 0;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Светло-серый фон */
+  border-top: 16px solid #3498db; /* Синяя верхняя часть */
+  border-radius: 50%; /* Круглая форма */
+  width: 120px; /* Ширина */
+  height: 120px; /* Высота */
+  animation: spin 1.5s linear infinite; /* Анимация вращения */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрирование по середине экрана */
+  z-index: 9999; /* Убедитесь, что лоадер находится поверх других элементов */
+  display: none; /* Скрыт по умолчанию */
+}
+
+/* Анимация вращения */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Класс для показа лоадера */
+.loader.is-visible {
+  display: block; /* Показать лоадер */
+}
