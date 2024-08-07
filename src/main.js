@@ -62,6 +62,7 @@ async function handleSubmit(event) {
     const { hits, total } = await ImagesApiService.getImages(params);
     params.maxPage = Math.ceil(total / params.per_page);
     renderGallery(gallery, hits);
+    lightbox.refresh();
     console.log(total);
     const cardHeight = document
       .querySelector('.gallery-item')
