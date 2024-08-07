@@ -46,7 +46,7 @@ searchForm.addEventListener('submit', handleSubmit);
 async function handleSubmit(event) {
   event.preventDefault();
   clearGallery(gallery);
-  params.q = input.value;
+  params.q = input.value.trim();
   console.log(params.q);
   showLoader();
 
@@ -56,6 +56,9 @@ async function handleSubmit(event) {
   params.page = 1;
 
   try {
+    if (params.q == '') {
+      throw new Error();
+    }
     const { hits, total } = await ImagesApiService.getImages(params);
     params.maxPage = Math.ceil(total / params.per_page);
     renderGallery(gallery, hits);
@@ -76,6 +79,9 @@ async function handleSubmit(event) {
       title: 'Error',
       message: 'Error',
     });
+    hideLoader();
+    loadMoreBtn.hide();
+    loadBtn.removeEventListener('click', handleClick);
   } finally {
     searchForm.reset();
   }
